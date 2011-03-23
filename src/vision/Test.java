@@ -11,7 +11,6 @@ import com.googlecode.javacpp.Loader;
 import com.googlecode.javacv.CanvasFrame;
 import com.googlecode.javacv.OpenCVFrameGrabber;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
-import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
 import com.googlecode.javacv.cpp.opencv_objdetect;
 
 public class Test {
@@ -53,48 +52,47 @@ public class Test {
 
 	}
 
-	public static void cam() throws Exception{
+	public static void cam() throws Exception {
 		// Touche clavier
 		char key = 0;
 		// Image
-		 IplImage image;
-		// Capture vidéo
-		CvCapture capture;
-	 
+		IplImage image;
+
 		// Ouvrir le flux vidéo
-		//capture = cvCreateFileCapture("/path/to/your/video/test.avi"); // chemin pour un fichier
-		//capture = cvCreateCameraCapture(0);
+		// capture = cvCreateFileCapture("/path/to/your/video/test.avi"); //
+		// chemin pour un fichier
+		// capture = cvCreateCameraCapture(0);
 		OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
-		grabber.start() ; 
+		grabber.start();
 		// Vérifier si l'ouverture du flux est ok
-	 
+
 		// Définition de la fenêtre
-		//oGeek Window", CV_WINDOW_AUTOSIZE);
+		// oGeek Window", CV_WINDOW_AUTOSIZE);
 		CanvasFrame fenetre = new CanvasFrame("Out");
-	 
+
 		// Boucle tant que l'utilisateur n'appuie pas sur la touche q (ou Q)
-		while(key != 'q' && key != 'Q') {
-	 
-		   // On récupère une image
-		   image = grabber.grab() ;
-	 
-		   // On affiche l'image dans une fenêtre
-		   fenetre.showImage(image);
-	 
-		   // On attend 10ms
-		   key = (char) cvWaitKey(10);
-	 
+		while (key != 'q' && key != 'Q') {
+
+			// On récupère une image
+			image = grabber.grab();
+
+			// On affiche l'image dans une fenêtre
+			fenetre.showImage(image);
+
+			// On attend 10ms
+			key = (char) cvWaitKey(10);
+
 		}
-	 
-		fenetre.dispose() ; 
-		//cvDestroyWindow("GeckoGeek Window");
-	 
-		//return 0;
-	 
+
+		fenetre.dispose();
+		// cvDestroyWindow("GeckoGeek Window");
+
+		// return 0;
+
 	}
 
 	public static void main(String args[]) throws Exception {
-		//charger("/Users/gallaz/Documents/workspace/REBUT/resource/lib/javacv-bin/samples/image0.png");
-		cam() ; 
+		// charger("/Users/gallaz/Documents/workspace/REBUT/resource/lib/javacv-bin/samples/image0.png");
+		cam();
 	}
 }
